@@ -13,7 +13,7 @@ phases:
       - echo Building the Node code...
       # - cd $CODEBUILD_SRC_DIR/hello-world
       - sam build
-      - sam deploy --no-confirm-changeset --no-fail-on-empty-changeset
+      - sam deploy --stack-name template.yaml --no-confirm-changeset --no-fail-on-empty-changeset
       # - npm run test
 artifacts:
   # secondary-artifacts:

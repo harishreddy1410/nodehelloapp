@@ -12,7 +12,7 @@ phases:
       # - go build hello.go 
       - echo Building the Node code...
       - cd $CODEBUILD_SRC_DIR/hello-world
-      - npm run test
+      # - npm run test
 artifacts:
   secondary-artifacts:
     nodejs_artifacts:

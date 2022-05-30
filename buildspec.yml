@@ -14,9 +14,10 @@ phases:
       - cd $CODEBUILD_SRC_DIR/hello-world
       # - npm run test
 artifacts:
-  secondary-artifacts:
-    nodejs_artifacts:
-      base-directory: hello-world
-      files:
-        - app.js
-        - package.json
+  # secondary-artifacts:
+  #   nodejs_artifacts:
+    base-directory: hello-world
+    files:
+      - app.js
+      - package.json
+      - template.yaml

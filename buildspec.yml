@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      #golang: 1.13
+      nodejs: 14
+  build:
+    commands:
+      # - echo Building the Go code...
+      # - cd $CODEBUILD_SRC_DIR/golang-app
+      # - go build hello.go 
+      - echo Building the Node code...
+      - cd $CODEBUILD_SRC_DIR/hello-world
+      - npm run test
+artifacts:
+  secondary-artifacts:
+    nodejs_artifacts:
+      base-directory: hello-world
+      files:
+        - app.js
+        - package.json

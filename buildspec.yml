@@ -11,7 +11,9 @@ phases:
       # - cd $CODEBUILD_SRC_DIR/golang-app
       # - go build hello.go 
       - echo Building the Node code...
-      - cd $CODEBUILD_SRC_DIR/hello-world
+      # - cd $CODEBUILD_SRC_DIR/hello-world
+      - sam build
+      - sam deploy --no-confirm-changeset --no-fail-on-empty-changeset
       # - npm run test
 artifacts:
   # secondary-artifacts:
@@ -20,4 +22,3 @@ artifacts:
     files:
       - app.js
       - package.json
-      - template.yaml

@@ -1,26 +1,37 @@
 version: 0.2
-
 phases:
   install:
     runtime-versions:
-      #golang: 1.13
-      nodejs: 14
+        nodejs: 14
   build:
     commands:
-      # - echo Building the Go code...
-      # - cd $CODEBUILD_SRC_DIR/golang-app
-      # - go build hello.go 
-      - echo Building the Node code...
-      # - cd $CODEBUILD_SRC_DIR/hello-world
-      - sam build
-      - sam sync --stack-name template.yaml --watch
-      - sam deploy --guided --no-confirm-changeset --no-fail-on-empty-changeset
-      #- sam deploy --stack-name template.yaml --no-confirm-changeset --no-fail-on-empty-changeset
-      # - npm run test
+      - sam package --template-file template.yml --s3-bucket bucketname --output-template-file packaged-template.yml
 artifacts:
-  # secondary-artifacts:
-  #   nodejs_artifacts:
-    base-directory: hello-world
-    files:
-      - app.js
-      - package.json
+  files:
+    - packaged-template.yml
+# version: 0.2
+
+# phases:
+#   install:
+#     runtime-versions:
+#       #golang: 1.13
+#       nodejs: 14
+#   build:
+#     commands:
+#       # - echo Building the Go code...
+#       # - cd $CODEBUILD_SRC_DIR/golang-app
+#       # - go build hello.go 
+#       - echo Building the Node code...
+#       # - cd $CODEBUILD_SRC_DIR/hello-world
+#       - sam build
+#       - sam sync --stack-name template.yaml --watch
+#       - sam deploy --guided --no-confirm-changeset --no-fail-on-empty-changeset
+#       #- sam deploy --stack-name template.yaml --no-confirm-changeset --no-fail-on-empty-changeset
+#       # - npm run test
+# artifacts:
+#   # secondary-artifacts:
+#   #   nodejs_artifacts:
+#     base-directory: hello-world
+#     files:
+#       - app.js
+#       - package.json
